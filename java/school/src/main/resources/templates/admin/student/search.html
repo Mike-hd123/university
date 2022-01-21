@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <title>教务系统</title>
+  <!-- Le styles -->
+  <script th:src="@{/webjars/jquery/3.5.1/jquery.js}"></script>
+  <link th:href="@{/webjars/bootstrap/4.6.0/css/bootstrap.css}" rel="stylesheet">
+  <script th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.js}" type="text/javascript"></script>
+</head>
+
+<body>
+  <div th:insert="~{admin/public/public::top}"></div>
+  <div class="container">
+    <div class="row row-cols-10">
+      <div th:insert="~{admin/public/public::left}"></div>
+      <div class="col-9">
+        <form class="form-inline" th:action="@{/admin/student/search}">
+          <label class="my-1 mr-2" for="inlineFormCustomSelectPref">请选择搜索条件</label>
+          <select name="type" class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+            <option th:selected="${type}==1" value="1">id</option>
+            <option th:selected="${type}==2" value="2">name</option>
+            <option th:selected="${type}==3" value="3">ssex</option>
+            <option th:selected="${type}==4" value="4">sage</option>
+            <option th:selected="${type}==3" value="5">Classname</option>
+            <option th:selected="${type}==4" value="6">sdept</option>
+          </select>
+          <input name="value" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button type="submit" class="btn btn-primary my-1">Submit</button>
+        </form>
+        <table th:if="${students}" class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">id</th>
+              <th scope="col">name</th>
+              <th scope="col">ssex</th>
+              <th scope="col">sage</th>
+              <th scope="col">Classname</th>
+              <th scope="col">sdept</th>
+              <th scope="col">操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="student:${students}">
+              <td th:text="${student.getId()}"></td>
+              <td th:text="${student.getUsername()}"></td>
+              <td th:text="${student.getSsex()}"></td>
+              <td th:text="${student.getSage()}"></td>
+              <td th:text="${student.getClassname()}"></td>
+              <td th:text="${student.getSdept()}"></td>
+              <td>
+                <a th:href="@{/admin/student/chang(id=${student.getId()})}" class="btn btn-sm btn-primary">编辑</a>
+                <a th:href="@{/admin/student/delete(id=${student.getId()})}" class="btn btn-sm btn-danger">删除</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.js}" type="text/javascript"></script>
+</body>
+
+</html>
+
+</html>

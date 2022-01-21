@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <style type="text/css">
+        body {
+            background-repeat: no-repeat;
+            /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */
+            background-attachment: fixed;
+            /*此条属性必须设置否则可能无效*/
+            /* 让背景图基于容器大小伸缩 */
+            background-size: cover;
+            /* 设置背景颜色，背景图加载过程中会显示背景色 */
+            background-color: #CCCCCC;
+        }
+
+        #user_reg {
+            font-family: 微软雅黑;
+            font-size: 33px;
+            text-align: center;
+            margin-top: 200px;
+        }
+
+        form {
+            width: 500px;
+            /*设置宽度，方便使其居中*/
+            margin: 40px auto auto auto;
+            /*上右下左*/
+            font-size: 20px;
+        }
+
+        input {
+            height: 30px;
+            width: 12em;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+        /*input标签下的属性选择器*/
+        input[type="submit"],
+        input[type="reset"] {
+            height: 25px;
+            width: 5em;
+            margin-top: 5px;
+            margin-left: 6px;
+        }
+
+        div {
+            font-size: 15px;
+        }
+    </style>
+</head>
+
+<script type="text/javascript">
+    //函数4：验证表单是否已经填好
+    function validate_form() {  //对用户名和密码文本框进行不为空的校验函数
+        with (document.Regsiter) {  //为下面语句块中的变量指明所属对象 
+            var user = loginName.value;   //相当于 var user=document.Regsiter.loginName.value;
+            var pass = password.value;
+            if (user == null || user == "") {
+                alert("请填写用户名");
+                return false;
+            }
+            else if (pass == null || pass == "") {
+                alert("请填写密码");
+                return false;
+            }
+        }
+        document.login.submit();
+    }
+</script>
+
+<body th:background="@{/images/bg.jpg}">
+    <div id="user_reg">用户登录:</div>
+    <form method="post" name="Regsiter" th:action="@{/user/login}">
+        <table align="center">
+            <tr>
+                <td>账&ensp;号：</td>
+                <td><input type="text" name="loginName" size="20"></td>
+                <td id="test_user"></td>
+            </tr>
+            <tr>
+                <td>密&ensp;码：</td>
+                <td><input type="password" name="password" size="20"></td>
+                <td id="test_pw"></td>
+            </tr>
+            <tr align="center" th:if="${! #strings.isEmpty(msg)}">
+                <td colspan="2">
+                    <p style="color: red" th:text="${msg}" ></p>
+                </td>
+            </tr>
+            <tr align="center">
+                <td colspan="2">
+                    <input type="reset" value="重置" />
+                    <input type="submit" id="submit_form" value="登录" onclick="return validate_form()" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

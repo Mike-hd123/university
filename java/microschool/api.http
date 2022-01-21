@@ -1,0 +1,167 @@
+@baseUrl = http://localhost/api
+@token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhZG1pbiJ9.TbMdViKVXAhT-BU0Y9cDIdkLwBjBAT8onPhMBn8GvfQ
+@token2 = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyIn0.M60n4tiDfb8uFgQQHNNfo6_EvR28ffS-I_3ub7IRQZ0
+@token3 = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0In0.76yAfupilGGF39C6iU6yVEHaX89EEGKnocUEieJ6cmM
+POST {{baseUrl}}/user/login
+content-type: application/json
+
+{
+    "username":"admin",
+    "password":"test"
+}
+###
+
+GET {{baseUrl}}/user/online
+Authorization: {{token}}
+###
+
+GET {{baseUrl}}/user/loginout
+Authorization: {{token}}
+###
+
+GET {{baseUrl}}/user/utype
+Authorization: {{token}}
+
+###
+GET  {{baseUrl}}/user/file
+Authorization: {{token}}
+
+###
+
+##保存文件
+PUT  {{baseUrl}}/user/savefile
+?file=http://oss.mike-hd123.top/Fp0-Fr4CWhex1NDcZulM7Gk-TpAR
+Content-Type: application/json
+Authorization: {{token}}
+
+###
+
+
+###教师###
+
+POST {{baseUrl}}/teacher
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "username":"hd1234",
+    "ssex":"男",
+    "sage":25
+}
+###
+
+DELETE {{baseUrl}}/teacher
+?id=10
+Authorization: {{token}}
+###
+
+PUT {{baseUrl}}/teacher
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "id":"1",
+    "username":"hd123",
+    "ssex":"男",
+    "sage":25
+}
+###
+
+
+GET {{baseUrl}}/teacher
+?query=
+&pagenum=1
+&pagesize=5
+Authorization: {{token}}
+###
+
+GET {{baseUrl}}/teacher/me
+content-type: application/json
+Authorization: {{token}}
+
+
+###学生###
+POST {{baseUrl}}/student
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "username":"hd123",
+    "ssex":"男",
+    "sage":25,
+    "classname":"软件3班",
+    "sdept":"计算机学院"
+}
+###
+
+
+DELETE {{baseUrl}}/student
+?id=5
+Authorization: {{token}}
+
+###
+
+PUT {{baseUrl}}/student
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "id":"1",
+    "username":"hd123",
+    "ssex":"男",
+    "sage":25,
+    "classname":"软件3班",
+    "sdept":"计算机学院"
+}
+###
+
+GET {{baseUrl}}/student
+?query=
+&pagenum=1
+&pagesize=5
+content-type: application/json
+Authorization: {{token}}
+
+###
+
+GET {{baseUrl}}/student/me
+content-type: application/json
+Authorization: {{token3}}
+
+
+
+###课程###
+POST {{baseUrl}}/course
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "name":"概率论",
+    "cteacher":"CC"
+}
+###
+
+DELETE {{baseUrl}}/course
+?id=5
+Authorization: {{token}}
+
+###
+
+PUT {{baseUrl}}/course
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "id":"1",
+    "name":"概率论",
+    "cteacher":"AA"
+}
+###
+
+GET {{baseUrl}}/course
+?query=
+&pagenum=1
+&pagesize=5
+content-type: application/json
+Authorization: {{token}}
+###

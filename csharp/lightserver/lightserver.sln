@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lightserver", "lightserver.csproj", "{C4EC5A35-5AA8-45A6-830D-4D94DED4DDD7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C4EC5A35-5AA8-45A6-830D-4D94DED4DDD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4EC5A35-5AA8-45A6-830D-4D94DED4DDD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4EC5A35-5AA8-45A6-830D-4D94DED4DDD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4EC5A35-5AA8-45A6-830D-4D94DED4DDD7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AF742F9F-3EA0-4312-A263-5BE87D205636}
+	EndGlobalSection
+EndGlobal

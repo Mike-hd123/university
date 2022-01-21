@@ -1,0 +1,38 @@
+@page "/Details/{id}"
+@using GrpcWebBlazorWasm.Shared
+@inject TouristRouteProtoSevice.TouristRouteProtoSeviceClient TouristRouteProtoSeviceClient
+@inject MessageService _message
+
+@if (reply == null)
+{
+    <p>加载中</p>
+}
+else
+{
+    <p>@reply.Title</p>
+        @((MarkupString)reply.Fees)
+        @((MarkupString)reply.Notes)
+        @((MarkupString)reply.Features)
+    <p>@reply.Price</p>
+}
+
+@code {
+    [Parameter]
+    public string Id { get; set; }
+    TouristRoute reply;
+    protected override async Task OnInitializedAsync()
+    {
+        var request = new TouristRouteId { Id = Id };
+        try
+        {
+            reply = await TouristRouteProtoSeviceClient.GetTouristRouteAsync(request);
+            Console.WriteLine(reply);
+        }
+        catch (System.Exception ex)
+        {
+            await _message.Error("未找到!");
+            Console.WriteLine("出现了:" + ex.Message + "错误!");
+            return;
+        }
+    }
+}

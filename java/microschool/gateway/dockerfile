@@ -1,0 +1,4 @@
+FROM joengenduvel/jre17
+COPY /target/*.jar /home/run.jar
+EXPOSE 80
+ENTRYPOINT ["java","-jar","/home/run.jar"]

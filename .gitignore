@@ -1,0 +1,11 @@
+/**/bin
+/**/obj
+/**/target
+/**/.vscode
+/**/.project
+/**/.settings
+/**/.classpath
+/**/node_modules
+/**/.factorypath
+/**/log
+/python/config.ini

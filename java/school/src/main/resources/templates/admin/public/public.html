@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+
+<!--top-->
+<div th:fragment="top" class="container">
+  <div class="row text-light bg-dark">
+    <div class="col">
+      <h6>[[${session.userinfo.getUsername()}]]</h6>
+    </div>
+    <div class="col-8">
+      <blockquote class="blockquote text-center">
+        <h6>教务系统管理员端</h6>
+      </blockquote>
+    </div>
+    <div class="col">
+      <a th:href="@{/user/logout}">logout</a>
+    </div>
+  </div>
+</div>
+
+<!--left-->
+<div th:fragment="left" class="col">
+  <!--给父类一个id使折叠可以只打开一个，用data-parent="#父类id"-->
+  <ul id="teacher" class="list-group" >
+    <!--教师-->
+    <li class="list-group-item list-group-item-primary">
+        <!--href指定要控制的类,data-toggle指定是折叠类-->
+        <a data-toggle="collapse" href="#collapseOne">教师</a>
+    </li>
+    <!--id用来说名被控制的一类-->
+    <li id="collapseOne" data-parent="#teacher" class="collapse list-group-item list-group-item-primary">
+        <a th:href="@{/admin/teacher/view}">浏览教师</a>
+    </li>
+    <li id="collapseOne" data-parent="#teacher" class="collapse list-group-item list-group-item-primary">
+        <a th:href="@{/admin/teacher/search}">搜索教师</a>
+    </li>
+    <li id="collapseOne" data-parent="#teacher" class="collapse list-group-item list-group-item-primary">
+        <a th:href="@{/admin/teacher/add}">添加教师</a>
+    </li>
+    <!--学生-->
+    <li class="list-group-item list-group-item-primary">
+        <a data-toggle="collapse" href="#collapseTwo">学生</a>
+    </li>
+    <li id="collapseTwo" data-parent="#teacher"  class="collapse list-group-item list-group-item-primary">
+        <a th:href="@{/admin/student/view}">浏览学生</a>
+    </li>
+    <li id="collapseTwo" data-parent="#teacher"  class="collapse list-group-item list-group-item-primary">
+        <a th:href="@{/admin/student/search}">搜索学生</a>
+    </li>
+    <li id="collapseTwo" data-parent="#teacher"  class="collapse list-group-item list-group-item-primary">
+        <a th:href="@{/admin/student/add}">添加学生</a>
+    </li>
+    <!--课程-->
+    <li class="list-group-item list-group-item-primary">
+        <a data-toggle="collapse" href="#collapseThree">课程</a>
+    </li>
+    <li id="collapseThree" data-parent="#teacher"  class="collapse list-group-item list-group-item-primary">
+        <a th:href="@{/admin/course/view}">浏览课程</a>
+    </li>
+    <li id="collapseThree" data-parent="#teacher"  class="collapse list-group-item list-group-item-primary">
+        <a th:href="@{/admin/course/search}">搜索课程</a>
+    </li>
+    <li id="collapseThree" data-parent="#teacher"  class="collapse list-group-item list-group-item-primary">
+        <a th:href="@{/admin/course/add}">添加课程</a>
+    </li>
+    <!--账号-->
+    <li class="list-group-item list-group-item-primary">
+        <a data-toggle="collapse" href="#collapseFour">信息</a>
+    </li>
+    <li id="collapseFour" data-parent="#teacher"  class="collapse list-group-item list-group-item-primary">
+        <a th:href="@{/admin/me}">我的信息</a>
+    </li>
+    <li id="collapseFour" data-parent="#teacher"  class="collapse list-group-item list-group-item-primary">
+        <a th:href="@{/admin/passwd}">修改密码</a>
+    </li>
+</ul>
+</div>

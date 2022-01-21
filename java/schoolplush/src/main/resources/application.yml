@@ -1,0 +1,19 @@
+server:
+  port: 8081
+spring: 
+  thymeleaf:
+    cache: false
+  devtools:
+    restart:
+      enabled: true
+  servlet:
+    multipart:
+      max-request-size: 10MB
+      max-file-size: 10MB
+  profiles:
+    active: "@profiles.active@"
+qiniu:
+  url: oss.mike-hd123.top
+  accessKey: Zb8X8dz6rs5_-dU-M4HjQzaNyFYGCJKqUuDleaG7
+  secretKey: eJB-40c8xBzZ4kCPIV4ZzlyIpvU7oFedN2sk5eVw
+  bucket: mike-hd123

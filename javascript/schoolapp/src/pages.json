@@ -1,0 +1,75 @@
+{
+	"pages": [
+		{
+			"path": "pages/student/index",
+			"style": {
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/teacher/index",
+			"style": {
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/course/index",
+			"style": {
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/me"
+		},
+		{
+			"path": "pages/login"
+		},
+		{
+			"path": "pages/student/edit"
+		},
+		{
+			"path": "pages/student/add"
+		},
+		{
+			"path": "pages/course/info"
+		},
+		{
+			"path": "pages/teacher/info"
+		}
+	],
+	"tabBar": {
+		"color": "#8a8a8a",
+		"selectedColor": "#d4237a",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [
+			{
+				"pagePath": "pages/student/index",
+				"text": "学生"
+			},
+			{
+				"pagePath": "pages/teacher/index",
+				"text": "教师"
+			},
+			{
+				"pagePath": "pages/course/index",
+				"text": "课程"
+			},
+			{
+				"pagePath": "pages/me",
+				"text": "我"
+			}
+		]
+	},
+	"globalStyle": {
+		"app-plus": {
+			"titleNView": false
+		}
+	},
+	"easycom": {
+		"autoscan": true,
+		"custom": {
+			"^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
+		}
+	}
+}

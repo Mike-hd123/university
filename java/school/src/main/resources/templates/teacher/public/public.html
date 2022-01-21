@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+
+</html>
+<!--top-->
+<div th:fragment="top" class="container">
+    <div class="row text-light bg-dark">
+        <div class="col">
+            <h6>[[${session.userinfo.getUsername()}]]</h6>
+        </div>
+        <div class="col-8">
+            <blockquote class="blockquote text-center">
+                <h6>教务系统教师端</h6>
+            </blockquote>
+        </div>
+        <div class="col">
+            <a th:href="@{/user/logout}">logout</a>
+        </div>
+    </div>
+</div>
+
+<!--left-->
+<div th:fragment="left" class="col">
+    <ul class="list-group">
+        <li class="list-group-item list-group-item-primary">
+            <a th:href="@{/teacher/me}">我的信息</a>
+        </li>
+        <li class="list-group-item list-group-item-primary">
+            <a th:href="@{/teacher/grade}">上传成绩</a>
+        </li>
+        <li class="list-group-item list-group-item-primary">
+            <a th:href="@{/teacher/quality}">质量评估</a>
+        </li>
+        <li class="list-group-item list-group-item-primary">
+            <a th:href="@{/teacher/timetable}">课表查询</a>
+        </li>
+        <li class="list-group-item list-group-item-primary">
+            <a th:href="@{/teacher/passwd}">修改密码</a>
+        </li>
+    </ul>
+</div>
+
+</html>

@@ -1,0 +1,169 @@
+@baseUrl = http://localhost:8081/api
+#admin
+@token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhZG1pbiJ9.jL9GBTZLnBVlIZE0fm0vgREnZ4sZJAuX6Ro-MK18vWU
+#teacher
+@token2 = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyIn0.IbPM5l29yUT1u3gi1G9KhKsLtVcEWpT1dq1IaOCUKVI
+#student
+@token3 = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1In0.T5S-LiY5VJzb88yBEXKumIoCEFcBHzugb0yItW28-cs
+@tokenerroe = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJ0ZXN0In0.1Emm5qW3Qd-pxS4yfOkPCmN2T3hZJVISSoyWxfM81TM
+POST {{baseUrl}}/login
+content-type: application/json
+
+{
+    "username":"admin",
+    "password":"test"
+}
+###
+
+GET {{baseUrl}}/utype
+Authorization: {{token}}
+
+###
+GET  {{baseUrl}}/file
+Authorization: {{token}}
+
+
+###
+GET {{baseUrl}}/me
+content-type: application/json
+Authorization: {{token}}
+
+###
+
+##保存文件
+POST  {{baseUrl}}/savefile
+Content-Type: application/json
+Authorization: {{token2}}
+
+{
+    "filename":"admin_e14dd5820f8da0d0db1f9e322ce17022.jpeg"
+}
+
+###教师###
+
+GET {{baseUrl}}/teacher
+?query=
+&pagenum=1
+&pagesize=5
+Authorization: {{token}}
+
+###
+#修改
+PUT {{baseUrl}}/teacher
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "id":"1",
+    "username":"hd123",
+    "ssex":"男",
+    "sage":25,
+    "file":"/Usersfile/admin_头像.jpeg"
+}
+###
+# 增加
+POST {{baseUrl}}/teacher
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "username":"hd1234",
+    "ssex":"男",
+    "sage":25,
+    "file":"/Usersfile/admin_头像.jpeg"
+}
+###
+# 删除
+DELETE {{baseUrl}}/teacher
+?id=10
+Authorization: {{token}}
+
+###学生###
+
+GET {{baseUrl}}/student
+?query=
+&pagenum=1
+&pagesize=5
+content-type: application/json
+Authorization: {{token}}
+
+###
+
+PUT {{baseUrl}}/student
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "id":"1",
+    "username":"hd123",
+    "ssex":"男",
+    "sage":25,
+    "classname":"软件3班",
+    "sdept":"计算机学院",
+    "file":"/Usersfile/admin_头像.jpeg"
+}
+###
+
+POST {{baseUrl}}/student
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "username":"hd123",
+    "ssex":"男",
+    "sage":25,
+    "classname":"软件3班",
+    "sdept":"计算机学院",
+    "file":"/Usersfile/admin_头像.jpeg"
+}
+###
+
+DELETE {{baseUrl}}/student
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "id":4
+}
+
+
+###课程###
+
+GET {{baseUrl}}/course
+?query=
+&pagenum=1
+&pagesize=5
+content-type: application/json
+Authorization: {{token}}
+
+###
+
+PUT {{baseUrl}}/course
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "id":"1",
+    "name":"概率论",
+    "cteacher":"AA"
+}
+###
+
+POST {{baseUrl}}/course
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "name":"概率论",
+    "cteacher":"CC"
+}
+###
+
+DELETE {{baseUrl}}/course
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "id":3
+}
+###

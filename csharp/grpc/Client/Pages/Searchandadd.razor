@@ -1,0 +1,187 @@
+﻿@page "/Searchandadd"
+@using GrpcWebBlazorWasm.Shared
+@inject TouristRouteProtoSevice.TouristRouteProtoSeviceClient TouristRouteProtoSeviceClient
+@inject NavigationManager Navigation
+@inject MessageService _message
+
+<Card Style="margin-top:10px;">
+    <Row>
+        <AntDesign.Col Class="gutter-row">
+            <Search Placeholder="请输入id" @bind-Value="@touristRouteId" OnSearch="GetTouristRoute" />
+        </AntDesign.Col>
+        <AntDesign.Col Class="gutter-row" Offset="1">
+            <Button Type="primary" OnClick="AddTouristRoute">add</Button>
+        </AntDesign.Col>
+    </Row>
+    <div Style="margin-top:10px;">
+        <Table DataSource="@testData" Context="TouristRoute">
+            <Column Title="Title" @bind-Field="@TouristRoute.Title">
+                <a href="/Details/@TouristRoute.Id">@TouristRoute.Title</a>
+            </Column>
+            <Column Title="Description" @bind-Field="@TouristRoute.Description" />
+            <Column Title="CreateTime" @bind-Field="@TouristRoute.ShowDate" Format="yy-mm-hh"/>
+            <Column Title="Price" @bind-Field="@TouristRoute.Price" Format="站位" />
+            <ActionColumn Title="operation">
+                <Space>
+                    <SpaceItem><Button Type="primary" OnClick="()=>Edit(TouristRoute.Id)">Edit</Button>
+                    </SpaceItem>
+                    <SpaceItem><Button Danger Type="primary" OnClick="()=>Delete(TouristRoute.Id)">Delete</Button>
+                    </SpaceItem>
+                </Space>
+            </ActionColumn>
+        </Table>
+    </div>
+</Card>
+<Modal Title="@title" Visible="@_visible" OnOk="@HandleOk" OnCancel="@HandleCancel">
+    <Form Layout="@FormLayout.Vertical" Model="@reply" Context="TouristRoute">
+        <FormItem Label="Title">
+            <Input @bind-Value="@TouristRoute.Title" />
+        </FormItem>
+
+        <FormItem Label="Description">
+            <Input @bind-Value="@TouristRoute.Description" />
+        </FormItem>
+
+        <FormItem Label="Price">
+            <Input @bind-Value="@TouristRoute.ShowPrice" Min="0" Max="10000000000" DefaultValue="0" />
+        </FormItem>
+
+        <FormItem Label="TravelDays">
+            <RadioGroup @bind-Value="@TouristRoute.TravelDays">
+                <Radio Value="@(TravelDays.Unspecified)">0</Radio>
+                <Radio Value="@(TravelDays.One)">1</Radio>
+                <Radio Value="@(TravelDays.Two)">2</Radio>
+                <Radio Value="@(TravelDays.Three)">3</Radio>
+                <Radio Value="@(TravelDays.Four)">4</Radio>
+                <Radio Value="@(TravelDays.Five)">5</Radio>
+                <Radio Value="@(TravelDays.Six)">6</Radio>
+                <Radio Value="@(TravelDays.Seven)">7</Radio>
+                <Radio Value="@(TravelDays.Eight)">8</Radio>
+                <Radio Value="@(TravelDays.EightPlus)">9</Radio>
+            </RadioGroup>
+        </FormItem>
+
+        <FormItem Label="TripType">
+            <RadioGroup @bind-Value="@TouristRoute.TripType" ButtonStyle="solid">
+                <Radio Value="@(TripType.Unspecified)">Undefinition</Radio>
+                <Radio Value="@(TripType.HotelAndAttractions)">HotelAndAttractions</Radio>
+                <Radio Value="@(TripType.Group)">Group</Radio>
+                <br />
+                <Radio Value="@(TripType.PrivateGroup)">PrivateGroup</Radio>
+                <Radio Value="@(TripType.BackPackTour)">BackPackTour</Radio>
+                <Radio Value="@(TripType.SemiBackPackTour)">SemiBackPackTour</Radio>
+            </RadioGroup>
+        </FormItem>
+
+        <FormItem Label="departureCity">
+            <RadioGroup @bind-Value="@TouristRoute.DepartureCity" ButtonStyle="solid">
+                <Radio Value="@(DepartureCity.Unspecified)">Undefinition</Radio>
+                <Radio Value="@(DepartureCity.Beijing)">Beijing</Radio>
+                <Radio Value="@(DepartureCity.Shanghai)">Shanghai</Radio>
+                <Radio Value="@(DepartureCity.Canton)">Canton</Radio>
+                <Radio Value="@(DepartureCity.Shenzhen)">Shenzhen</Radio>
+            </RadioGroup>
+        </FormItem>
+    </Form>
+</Modal>
+
+
+@code {
+    string touristRouteId;
+    string title = "";
+    bool _visible = false;
+    bool add = false;
+    TouristRoute reply;
+    TouristRoute[] testData;
+    async Task GetTouristRoute()
+    {
+        var request = new TouristRouteId { Id = touristRouteId };
+        try
+        {
+            reply = await TouristRouteProtoSeviceClient.GetTouristRouteAsync(request);
+        }
+        catch (System.Exception ex)
+        {
+            await _message.Error("未找到!");
+            Console.WriteLine("出现了:" + ex.Message + "错误!");
+            return;
+        }
+        testData = new TouristRoute[1];
+        testData[0] = reply;
+    }
+
+    private void AddTouristRoute()
+    {
+        Console.WriteLine("add");
+        title = "添加";
+        _visible = true;
+        add = true;
+        reply = new();
+    }
+
+    async void Delete(string id)
+    {
+        var deltestData = testData.Where(x => x.Id == id).ToArray();
+        reply = deltestData[0];
+        var conut = await TouristRouteProtoSeviceClient.DelTouristRouteAsync(reply);
+        Console.WriteLine(conut);
+        if (conut.Size != 0)
+        {
+            await _message.Success("删除成功!");
+        }
+    }
+
+    void Edit(string id)
+    {
+        title = "编辑";
+        _visible = true;
+        add = false;
+        var deltestData = testData.Where(x => x.Id == id).ToArray();
+        reply = deltestData[0];
+        reply.ShowPrice = reply.Price;
+    }
+
+    private async Task HandleOk(MouseEventArgs e)
+    {
+        Console.WriteLine(reply);
+        reply.Price = reply.ShowPrice;
+        if (add)
+        {
+            @* 这里是添加的代码 *@
+            TouristRouteId request = await TouristRouteProtoSeviceClient.AddTouristRouteAsync(reply);
+            Console.WriteLine(request);
+            if (request.Id != null || !request.Id.Equals(""))
+            {
+                touristRouteId = request.Id;
+                _message.Success("成功了！");
+            }
+            else
+            {
+                _message.Error("失败了！");
+            };
+        }
+        else
+        {
+            @* 这里是修改的代码 *@
+            var conut = await TouristRouteProtoSeviceClient.EdiTouristRouteAsync(reply);
+            Console.WriteLine(conut.Size);
+            if (conut.Size != 0)
+            {
+                _message.Success("成功了！");
+            }
+            else
+            {
+                _message.Error("失败了！");
+            };
+        }
+        _visible = false;
+        await GetTouristRoute();
+    }
+
+    private async Task HandleCancel(MouseEventArgs e)
+    {
+        _message.Warning("取消了！");
+        _visible = false;
+        if (touristRouteId != null) await GetTouristRoute();
+    }
+}

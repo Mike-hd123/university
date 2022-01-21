@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>教务系统</title>
+    <!-- Le styles -->
+    <link th:href="@{/webjars/bootstrap/4.6.0/css/bootstrap.css}" rel="stylesheet">
+</head>
+
+<body>
+    <div th:insert="~{student/public/public::top}"></div>
+    <div class="container">
+        <div class="row row-cols-10">
+            <div th:insert="~{student/public/public::left}"></div>
+            <div class="col-9">
+                <h1>课表</h1>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+</html>

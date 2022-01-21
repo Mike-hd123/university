@@ -1,0 +1,246 @@
+{
+  "rootTopicKey": "1c3c98b5-2f0b-4974-980b-dcd994a9f40e",
+  "editorRootTopicKey": "1c3c98b5-2f0b-4974-980b-dcd994a9f40e",
+  "focusKey": "f7f0dd8e-b364-4da4-9c04-8ae0355d165b",
+  "extData": {
+    "TOPIC_REFERENCE": {
+      "reference": {}
+    }
+  },
+  "topics": [
+    {
+      "key": "cb2c792b-3e4d-4e5f-9b4f-c41ca87327fe",
+      "parentKey": "f7f0dd8e-b364-4da4-9c04-8ae0355d165b",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "已登录"
+        }
+      ]
+    },
+    {
+      "key": "f7f0dd8e-b364-4da4-9c04-8ae0355d165b",
+      "parentKey": "1c3c98b5-2f0b-4974-980b-dcd994a9f40e",
+      "subKeys": [
+        "cb2c792b-3e4d-4e5f-9b4f-c41ca87327fe",
+        "45252861-8457-4170-ae15-8060b9f31533"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "全局拦截"
+        }
+      ]
+    },
+    {
+      "key": "c707dbe6-a802-4cef-81e0-5932b5824271",
+      "parentKey": "1ec61101-245d-4141-8b86-e0b0585649eb",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "教师"
+        }
+      ]
+    },
+    {
+      "key": "4669bbde-8fd5-4802-819c-db0a6f2a602f",
+      "parentKey": "1ec61101-245d-4141-8b86-e0b0585649eb",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "学生"
+        }
+      ]
+    },
+    {
+      "key": "1ec61101-245d-4141-8b86-e0b0585649eb",
+      "parentKey": "dfaf73d0-a537-485b-b166-41dda9116724",
+      "subKeys": [
+        "c707dbe6-a802-4cef-81e0-5932b5824271",
+        "4669bbde-8fd5-4802-819c-db0a6f2a602f"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "课程"
+        }
+      ]
+    },
+    {
+      "key": "1c3c98b5-2f0b-4974-980b-dcd994a9f40e",
+      "parentKey": null,
+      "subKeys": [
+        "f7f0dd8e-b364-4da4-9c04-8ae0355d165b",
+        "dfaf73d0-a537-485b-b166-41dda9116724"
+      ],
+      "collapse": false,
+      "style": "{\"contentStyle\":{\"background\":\"#30c18d\"}}",
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "拦截器"
+        }
+      ]
+    },
+    {
+      "key": "c72e4ad1-0e85-479c-852a-d8934a3c3a37",
+      "parentKey": "dfaf73d0-a537-485b-b166-41dda9116724",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "学生"
+        }
+      ]
+    },
+    {
+      "key": "45252861-8457-4170-ae15-8060b9f31533",
+      "parentKey": "f7f0dd8e-b364-4da4-9c04-8ae0355d165b",
+      "subKeys": [
+        "d19622c3-2a15-473c-bb60-fce9a0016b17"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "未登录"
+        }
+      ]
+    },
+    {
+      "key": "dfaf73d0-a537-485b-b166-41dda9116724",
+      "parentKey": "1c3c98b5-2f0b-4974-980b-dcd994a9f40e",
+      "subKeys": [
+        "c72e4ad1-0e85-479c-852a-d8934a3c3a37",
+        "46959b3c-f95c-42a9-8901-a5f2e00145cc",
+        "1ec61101-245d-4141-8b86-e0b0585649eb"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "角色控制"
+        }
+      ]
+    },
+    {
+      "key": "60af7735-7455-4281-94f7-ed1e4b19f1d4",
+      "parentKey": "d19622c3-2a15-473c-bb60-fce9a0016b17",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "登录页面"
+        }
+      ]
+    },
+    {
+      "key": "d19622c3-2a15-473c-bb60-fce9a0016b17",
+      "parentKey": "45252861-8457-4170-ae15-8060b9f31533",
+      "subKeys": [
+        "60af7735-7455-4281-94f7-ed1e4b19f1d4",
+        "357f8825-68d7-4759-9f12-d84c696c024a"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "白名单"
+        }
+      ]
+    },
+    {
+      "key": "46959b3c-f95c-42a9-8901-a5f2e00145cc",
+      "parentKey": "dfaf73d0-a537-485b-b166-41dda9116724",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "教师"
+        }
+      ]
+    },
+    {
+      "key": "357f8825-68d7-4759-9f12-d84c696c024a",
+      "parentKey": "d19622c3-2a15-473c-bb60-fce9a0016b17",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "静态资源"
+        }
+      ]
+    }
+  ],
+  "config": {
+    "readOnly": false,
+    "allowUndo": true,
+    "layoutDir": 0,
+    "theme": {
+      "name": "default",
+      "randomColor": true,
+      "background": "rgb(57,60,65)",
+      "highlightColor": "#50C9CE",
+      "marginH": 60,
+      "marginV": 20,
+      "contentStyle": {
+        "lineHeight": "1.5",
+        "fontSize": "16px"
+      },
+      "linkStyle": {
+        "lineRadius": 5,
+        "lineType": "curve",
+        "lineWidth": "3px"
+      },
+      "rootTopic": {
+        "contentStyle": {
+          "fontSize": "36px"
+        },
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      },
+      "primaryTopic": {
+        "contentStyle": {
+          "fontSize": "24px"
+        },
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      },
+      "normalTopic": {
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      }
+    }
+  },
+  "formatVersion": "0.0"
+}

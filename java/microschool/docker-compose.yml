@@ -1,0 +1,101 @@
+version: '3.8'
+services:
+# 网页
+  web:
+    build: schoolui
+    image: web
+    container_name: web
+    ports:
+      - '80:80'
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - gateway
+    networks:
+      - common
+  client:
+    build: schoolapp
+    image: client
+    container_name: client
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - '3000:80'
+    depends_on:
+      - gateway
+    networks:
+      - common
+# 对外网关
+  gateway: 
+    build: gateway
+    image: gateway
+    container_name: gateway
+    depends_on:
+     - eureka
+    networks:
+     - common
+# 微服务
+  user: 
+    build: user
+    image: user
+    container_name: user
+    depends_on:
+     - eureka
+    networks:
+     - common
+
+  student: 
+    build: student
+    image: student
+    container_name: student
+    depends_on:
+     - eureka
+    networks:
+     - common
+
+  teacher: 
+    build: teacher
+    image: teacher
+    container_name: teacher
+    depends_on:
+     - eureka
+    networks:
+     - common
+
+  course: 
+    build: course
+    image: course
+    container_name: course
+    depends_on:
+     - eureka
+    networks:
+     - common
+# 注册中心及其服务器
+  eureka: 
+    build: eureka
+    image: eureka
+    container_name: eureka
+    depends_on:
+     - mysql
+     - redis
+    networks:
+     - common
+  mysql:
+    image: mysql
+    container_name: mysql
+    environment:
+      MYSQL_DATABASE: school
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_HOST: '%'
+    volumes:
+      - ./database:/docker-entrypoint-initdb.d/
+    networks:
+     - common
+  redis: 
+    image: redis
+    container_name: redis
+    networks:
+     - common
+networks:
+  common:
+    driver: bridge
